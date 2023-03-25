@@ -9,7 +9,7 @@ const { developmentChains } = require("../../helper-hardhat-config")
           let fundMe
           let deployer
           let mockV3Aggregator
-          const sendValue = ethers.utils.parseEther("60")
+          const sendValue = ethers.utils.parseEther("0.01")
           beforeEach(async () => {
               //deploy our fund me contract using hardhat deploy
               deployer = (await getNamedAccounts()).deployer

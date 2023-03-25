@@ -25,7 +25,7 @@ contract FundMe {
     using PriceConverter for uint256;
 
     //State variables
-    uint256 public constant MINIMUM_USD = 50 * 1e18;
+    uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
     address[] private s_funders;
     mapping(address => uint256) private s_addressToAmountFunded;
     address private immutable i_owner;
@@ -109,6 +109,10 @@ contract FundMe {
         address funder
     ) public view returns (uint256) {
         return s_addressToAmountFunded[funder];
+    }
+
+    function getEtherPrice(uint256 value) public view returns (uint256) {
+        return value.getConversionRate(s_priceFeed);
     }
 
     function getPriceFeed() public view returns (AggregatorV3Interface) {
